@@ -89,6 +89,9 @@ impl <'info>Deposit<'info> {
         bank.total_deposit += amount;
         bank.total_deposit_share += user_share;
 
+
+        user.last_updated = Clock::get()?.unix_timestamp;
+
         Ok(())
     }
 }

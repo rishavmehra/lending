@@ -13,7 +13,7 @@ pub struct User {
     pub borrow_usdc: u64,
     pub borrow_usdc_share: u64,
     pub usdc_address: Pubkey,
-    pub last_updated: u64
+    pub last_updated: i64
 }
 
 #[account]
@@ -23,9 +23,12 @@ pub struct Bank{
     pub mint_address: Pubkey,
     pub total_deposit: u64,
     pub total_deposit_share: u64,
+    pub total_borrow: u64,
+    pub total_borrow_share: u64,
     pub liquity_threshold: u64,
     pub liquity_bonus: u64,
     pub liquity_close_factor: u64,
     pub max_ltv: u64,
     pub last_updated: u64,
+    pub interest_rate: u64,
 }

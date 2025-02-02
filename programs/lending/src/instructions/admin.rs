@@ -55,6 +55,7 @@ impl <'info>InitBank<'info> {
         bank.authority = self.signer.key();
         bank.liquity_threshold =liquidation_threshold;
         bank.max_ltv = max_ltv;
+        bank.interest_rate = 0.05 as u64;
         Ok(())
     }
 }

@@ -27,4 +27,12 @@ pub mod lending {
         ctx.accounts.process_deposit(amount)
     }
 
+    pub fn withdraw(ctx: Context<Withdraw>, amount: u64) -> Result<()>{
+        ctx.accounts.process_withdraw(amount, &ctx.bumps)
+    }
+
+    pub fn borrow(ctx: Context<Borrow>, amount: u64) -> Result<()>{
+        ctx.accounts.process_borrow(amount, &ctx.bumps)
+    }
+
 }
