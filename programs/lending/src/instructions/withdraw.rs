@@ -70,6 +70,7 @@ impl <'info>Withdraw<'info> {
         let time_diff = user.last_updated-Clock::get()?.unix_timestamp;
 
         let bank = &mut self.bank;
+        // Continuous Compound Interest: A = P × e^rt
         bank.total_deposit = (bank.total_deposit as f64 * E.powf(bank.interest_rate as f32 * time_diff as f32) as f64) as u64;
 
         let value_per_share = bank.total_deposit as f64 / bank.total_deposit_share as f64;

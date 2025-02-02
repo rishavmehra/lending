@@ -35,4 +35,8 @@ pub mod lending {
         ctx.accounts.process_borrow(amount, &ctx.bumps)
     }
 
+    pub fn repay(ctx: Context<Repay>, amount: u64) -> Result<()>{
+        ctx.accounts.process_repay(amount)
+    }
+
 }
