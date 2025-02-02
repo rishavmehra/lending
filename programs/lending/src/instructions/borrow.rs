@@ -113,6 +113,9 @@ impl <'info>Borrow<'info> {
         let borrow_ratio = amount.checked_div(bank.total_borrow).unwrap();
         let user_shares = bank.total_borrow_share.checked_mul(borrow_ratio).unwrap();
 
+        bank.total_borrow += amount;
+        bank.total_borrow_share += user_shares;
+
         match self.mint.to_account_info().key() {
             key if key == user.usdc_address => {
                 user.borrow_usdc += amount;
@@ -133,4 +136,3 @@ fn calculate_accrued_interest(deposited: u64, interest_rate: u64, last_update: i
     let new_value = (deposited as f64 * E.powf(interest_rate as f32 * time_elapsed as f32) as f64) as u64;
     Ok(new_value)
 }
-
